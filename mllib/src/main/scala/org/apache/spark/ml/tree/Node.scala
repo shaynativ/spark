@@ -43,6 +43,11 @@ sealed abstract class Node extends Serializable {
    */
   private[ml] def impurityStats: ImpurityCalculator
 
+  /** Get the stats array for Redis export */
+  def getImpurityStats(): Array[Double] = {
+    impurityStats.stats
+  }
+
   /** Recursive prediction helper method */
   private[ml] def predictImpl(features: Vector): LeafNode
 
